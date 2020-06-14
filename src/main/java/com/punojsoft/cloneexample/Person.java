@@ -65,13 +65,15 @@ public class Person implements Cloneable {
     }
 
     /**
-     * deep shallow example
+     * customize clone method to support Deep Cloning
      *
      * @return
      * @throws CloneNotSupportedException
      */
     @Override
     protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
+        Person person = (Person) super.clone();
+        person.setDepartment((Department) person.getDepartment().clone());
+        return person;
     }
 }

@@ -36,7 +36,16 @@ public class Driver {
         System.out.println("Modify object : " + person2);
         //must be false ,since it doesnot share same memory
         System.out.println(person == person2);
-
-
+        /**
+         * to avoid modification on original object for reference type
+         * we should go for Deep copy [implement Cloneable for Department also
+         * implement custom clone method]
+         */
+        Person person3 = (Person) person.clone();
+        person2.getDepartment().setName("Science");
+        System.out.println("Original object : " + person);
+        System.out.println("Modify object : " + person2);
+        //must be false ,since it doesnot share same memory
+        System.out.println(person == person2);
     }
 }
