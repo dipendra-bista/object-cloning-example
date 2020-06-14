@@ -1,5 +1,9 @@
 package com.punojsoft.cloneexample;
 
+import org.apache.commons.lang3.SerializationUtils;
+
+import java.io.Serializable;
+
 public class Driver {
     public static void main(String[] args) throws CloneNotSupportedException {
         Person person = new Person(1, "dipendra bista", 27);
@@ -47,5 +51,14 @@ public class Driver {
         System.out.println("Modify object : " + person2);
         //must be false ,since it doesnot share same memory
         System.out.println(person == person2);
+        /**
+         * Deep cloning using Serealization ( commons.lang3 SerializationUtils)
+         * we just need to make object Serializable
+         */
+        Employee employee = new Employee(1, "puja khadka", new Department(1, "commerce"));
+        Employee employee1 = (Employee) SerializationUtils.clone((Serializable) employee);
+        employee1.setName("maiya bista");
+        System.out.println("original object : " + employee);
+        System.out.println("Modified object : " + employee1);
     }
 }

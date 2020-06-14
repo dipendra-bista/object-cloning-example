@@ -1,6 +1,8 @@
 package com.punojsoft.cloneexample;
 
-public class Department implements Cloneable {
+import java.io.Serializable;
+
+public class Department implements Cloneable, Serializable {
     private int id;
     private String name;
 
@@ -35,7 +37,7 @@ public class Department implements Cloneable {
                 ", name='" + name + '\'' +
                 '}';
     }
-    
+
     @Override
     protected Object clone() throws CloneNotSupportedException {
         return super.clone();
