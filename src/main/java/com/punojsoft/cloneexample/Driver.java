@@ -46,7 +46,19 @@ public class Driver {
          * implement custom clone method]
          */
         Person person3 = (Person) person.clone();
-        person2.getDepartment().setName("Science");
+        /**
+         * i .As a programmer it is our responsibility to make sure
+         *      to implement Cloneable interface to call clone method on
+         *      given object .So it is a best practice to check instance
+         *      of Cloneable.
+         *
+         * ii.clone method doesn't call constructor so its our responsibility
+         * to set all the property of the object
+         */
+        if (person instanceof Cloneable) {
+            person2.getDepartment().setName("Science");
+
+        }
         System.out.println("Original object : " + person);
         System.out.println("Modify object : " + person2);
         //must be false ,since it doesnot share same memory
@@ -56,9 +68,13 @@ public class Driver {
          * we just need to make object Serializable
          */
         Employee employee = new Employee(1, "puja khadka", new Department(1, "commerce"));
-        Employee employee1 = (Employee) SerializationUtils.clone((Serializable) employee);
-        employee1.setName("maiya bista");
-        System.out.println("original object : " + employee);
-        System.out.println("Modified object : " + employee1);
+        if (employee instanceof Serializable) {
+            Employee employee1 = (Employee) SerializationUtils.clone((Serializable) employee);
+            employee1.setName("maiya bista");
+            System.out.println("original object : " + employee);
+            System.out.println("Modified object : " + employee1);
+        }
+
+
     }
 }

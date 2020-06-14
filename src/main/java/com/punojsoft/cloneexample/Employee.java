@@ -16,6 +16,16 @@ public class Employee implements Serializable {
         this.department = department;
     }
 
+    /**
+     * copy constructor example
+     *
+     * @param employee
+     */
+    public Employee(Employee employee) {
+        this.id = employee.id;
+        this.name = employee.name;
+    }
+
     public int getId() {
         return id;
     }
